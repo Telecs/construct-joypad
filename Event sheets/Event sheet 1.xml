@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="IntendedScale" sid="921357452907828" static="0" type="number">1</variable>
+        <comment>By having an intended scale and gradually moving the actual layer scale towards that value, we can create a smooth zoom based on the car&apos;s speed.</comment>
+        <event-block sid="878242243318753">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="368536910613078" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="773782560070688" type="System">
+                    <param id="0" name="Variable">IntendedScale</param>
+                    <param id="1" name="Value">min(1, 100/(distance(Player1.X, Player1.Y, Player2.X, Player2.Y)/3))</param>
+                </action>
+                <action id="-17" name="Set layer scale" sid="394463061415069" type="System">
+                    <param id="0" name="Layer">&quot;Background&quot;</param>
+                    <param id="1" name="Scale">lerp(LayerScale(&quot;Background&quot;), IntendedScale, 0.04)</param>
+                </action>
+                <action id="-17" name="Set layer scale" sid="618894955854673" type="System">
+                    <param id="0" name="Layer">&quot;Game&quot;</param>
+                    <param id="1" name="Scale">LayerScale(&quot;Background&quot;)</param>
+                </action>
+                <action id="0" name="Set text" sid="567672498891128" type="Text">
+                    <param id="0" name="Text">distance(Player1.X, Player1.Y, Player2.X, Player2.Y)</param>
+                </action>
+                <action id="-7" name="Scroll to position" sid="422193060565012" type="System">
+                    <param id="0" name="X">(Player1.X+Player2.X)/2</param>
+                    <param id="1" name="Y">(Player1.Y+Player2.Y)/2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="351750887300172">
+            <conditions />
+            <actions />
+        </event-block>
+        <event-group description="" sid="522662437550338" title="Control Gamepad">
+            <sub-events>
+                <event-block sid="346390887799831">
+                    <conditions>
+                        <condition id="3" name="Is button down" sid="743911786340391" type="Gamepad">
+                            <param id="0" name="Gamepad">0</param>
+                            <param id="1" name="Button">7</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Car" id="7" name="Simulate control" sid="113492900361223" type="Player1">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="458160688897053">
+                    <conditions>
+                        <condition id="5" name="Compare axis" sid="414977539587596" type="Gamepad">
+                            <param id="0" name="Gamepad">0</param>
+                            <param id="1" name="Axis">0</param>
+                            <param id="2" name="Comparison">4</param>
+                            <param id="3" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Car" id="7" name="Simulate control" sid="713777573862477" type="Player1">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="983416421415286">
+                    <conditions>
+                        <condition id="5" name="Compare axis" sid="201320797218228" type="Gamepad">
+                            <param id="0" name="Gamepad">0</param>
+                            <param id="1" name="Axis">0</param>
+                            <param id="2" name="Comparison">2</param>
+                            <param id="3" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Car" id="7" name="Simulate control" sid="703486497063266" type="Player1">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="274816744007484">
+                    <conditions>
+                        <condition id="3" name="Is button down" sid="810828052956748" type="Gamepad">
+                            <param id="0" name="Gamepad">0</param>
+                            <param id="1" name="Button">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Car" id="7" name="Simulate control" sid="675240740684337" type="Player1">
+                            <param id="0" name="Control">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="866391127892999" title="Control Gamepad2">
+            <sub-events>
+                <event-block sid="275997232612578">
+                    <conditions>
+                        <condition id="3" name="Is button down" sid="224831906860684" type="Gamepad">
+                            <param id="0" name="Gamepad">1</param>
+                            <param id="1" name="Button">7</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Car" id="7" name="Simulate control" sid="657316263179837" type="Player2">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="204032467052199">
+                    <conditions>
+                        <condition id="5" name="Compare axis" sid="403764513023586" type="Gamepad">
+                            <param id="0" name="Gamepad">1</param>
+                            <param id="1" name="Axis">0</param>
+                            <param id="2" name="Comparison">4</param>
+                            <param id="3" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Car" id="7" name="Simulate control" sid="162568125429738" type="Player2">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="372031486450862">
+                    <conditions>
+                        <condition id="5" name="Compare axis" sid="475333469404977" type="Gamepad">
+                            <param id="0" name="Gamepad">1</param>
+                            <param id="1" name="Axis">0</param>
+                            <param id="2" name="Comparison">2</param>
+                            <param id="3" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Car" id="7" name="Simulate control" sid="235776004320610" type="Player2">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="833871780267756">
+                    <conditions>
+                        <condition id="3" name="Is button down" sid="810862686901612" type="Gamepad">
+                            <param id="0" name="Gamepad">1</param>
+                            <param id="1" name="Button">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Car" id="7" name="Simulate control" sid="469176723980738" type="Player2">
+                            <param id="0" name="Control">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="415618007382670">
+            <conditions>
+                <condition id="-11" name="For Each" sid="380669736222849" type="System">
+                    <param id="0" name="Object">Players</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="909653384516167">
+                    <conditions>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="582538895622464" type="Players">
+                            <param id="0" name="Object">TiledBackground</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="822549046960499" type="System">
+                            <param id="0" name="First value">Players.Car.MaxSpeed</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">500</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Car" id="4" name="Set max speed" sid="289484318993845" type="Players">
+                            <param id="0" name="Max Speed">200</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="544299250335761">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="998045570909374" type="Players">
+                            <param id="0" name="Object">TiledBackground</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="646137136614369" type="System">
+                            <param id="0" name="First value">Players.Car.MaxSpeed</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">500</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Car" id="4" name="Set max speed" sid="254077309062442" type="Players">
+                            <param id="0" name="Max Speed">500</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>
